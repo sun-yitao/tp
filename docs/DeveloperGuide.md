@@ -335,8 +335,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-*{More to be added}*
-
 
 **Use case: Update a student's details**
 
@@ -363,6 +361,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+
 **Use case: See all assignment statuses**
 
 **MSS**
@@ -380,7 +379,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-*{More to be added}*
+
 
 **Use case: Add an assignment**
 
@@ -410,8 +409,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2a1. TAsker shows an error message.
 
       Use case resumes at step 2.
-
-*{More to be added}*
 
 
 **Use case: Update a student's assignment submission status**
