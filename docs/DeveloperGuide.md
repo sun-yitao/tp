@@ -234,15 +234,25 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 
-**Target user profile**:
+**Target user profile (user persona)**:
 
-* has a need to manage a significant number of contacts
+<img width="400" src="https://qph.fs.quoracdn.net/main-qimg-99674b15041e648e58263efc5ec0dcdb" />
+
+Name: Jane
+
+Age: 19
+
+Undergraduate NUS CS Student, and a part-time teaching assistant
+
+* is a teaching assistant for CS modules
+* is busy because she is a overachieving student with lots of modules
+* needs to take attendance 
+* needs to keep track of student’s assignments and their submission status
 * prefer desktop apps over other types
 * can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* codes a lot, so she prefers keyboard-based interfaces
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: TAs can track students' details and submissions in a efficient and structured manner
 
 
 ### User stories
@@ -250,28 +260,66 @@ _{Explain here how the data archiving feature will be implemented}_
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| - | - | - | - |
+| `* * *` | user | CRUD student details into my data | add/remove my students data when they join/drop the module |
+| `* * *` | user | CRUD my students’ attendance | |
+| `* * *` | user | CRUD my students’ assignments & status  | keep track of my students’ assignment’s submission status |
+| `* *` | user | CRUD my student’s consultation requests | keep track of my students’ consultation requests |
+| `* *` | user | view all my upcoming consultations for the week, in chronological order | keep track of when my consultations are supposed to happen |
+| `* *` | user | mark when I end each of my consultations | keep track of the time elapsed of each consultation session |
+| `*` | user | generate a summary of my weekly consultation hours | keep track of the total amount of consultation time, for claiming purposes |
+| `*` | new user | see usage instructions | refer to instructions when I forget how to use the App |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `TAsker` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: List all students**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to list students
+2.  TAsker shows a list of students
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+      
+
+**Use case: Add a student**
+
+**MSS**
+
+1.  User requests to list students
+2.  TAsker shows a list of students
+3.  User requests to add a specific student to the list
+4.  TAsker adds the student to the list
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The student's details are insufficient/cannot be parsed.
+
+    * 2a1. TAsker shows an error message.
+
+      Use case resumes at step 2.
+
+
+**Use case: Delete a student**
+
+**MSS**
+
+1.  User requests to list students
+2.  TAsker shows a list of students
+3.  User requests to delete a specific student in the list
+4.  TAsker deletes the student
 
     Use case ends.
 
@@ -283,7 +331,117 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. TAsker shows an error message.
+
+      Use case resumes at step 2.
+
+*{More to be added}*
+
+
+**Use case: Update a student's details**
+
+**MSS**
+
+1.  User requests to list students
+2.  TAsker shows a list of students
+3.  User requests to update a specific student's details in the list
+4.  TAsker updates the student's details
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given index is invalid.
+
+    * 2a1. TAsker shows an error message.
+
+      Use case resumes at step 2.
+
+* 3a. The student's details are insufficient/cannot be parsed.
+
+    * 3a1. TAsker shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: See all assignment statuses**
+
+**MSS**
+
+1.  User requests to list students
+1.  TAsker shows a list of students, with their assignment statuses
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. No assignments are added.
+
+    * 2a1. TAsker will just show the student's information
+
+      Use case resumes at step 2.
+
+*{More to be added}*
+
+**Use case: Add an assignment**
+
+**MSS**
+
+1.  User requests to add a assignment to the list
+1.  TAsker adds the assignment to the list
+
+    Use case ends.
+
+
+**Use case: Delete an assignment**
+
+**MSS**
+
+1.  User requests to list students
+1.  TAsker shows a list of students, with their assignment statuses
+1.  User requests to delete an assignment from the list
+1.  TAsker deletes the assignment from the list
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given assignment is invalid.
+
+    * 2a1. TAsker shows an error message.
+
+      Use case resumes at step 2.
+
+*{More to be added}*
+
+
+**Use case: Update a student's assignment submission status**
+
+**MSS**
+
+1.  User requests to list students
+2.  TAsker shows a list of students, along with their assignment statuses
+3.  User requests to update a specific student's assignment submission status
+4.  TAsker updates the specific student's assignment submission status
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given index is invalid.
+
+    * 2a1. TAsker shows an error message.
+
+      Use case resumes at step 2.
+
+* 3a. The given assignment is invalid.
+
+    * 3a1. TAsker shows an error message.
+
+      Use case resumes at step 2.
+
+* 4a. The given assignment status is invalid.
+
+    * 4a1. TAsker shows an error message.
 
       Use case resumes at step 2.
 
@@ -301,6 +459,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **TA**: Teaching Assistant
+* **CS**: Computer Science
+* **CRUD**: Create, Read, Update, Delete
+
 
 --------------------------------------------------------------------------------------------------------------------
 
