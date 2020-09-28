@@ -3,7 +3,7 @@ About us
 ---
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
-
+This is a team project written using purely Java, created for CS2103T.
 You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
@@ -55,7 +55,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Testing
 
 ### Rishi Ravikumar
 
@@ -65,4 +65,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: UI 
