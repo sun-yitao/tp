@@ -16,7 +16,7 @@ import seedu.address.model.person.Person;
 /**
  * An Immutable TAsker that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
+@JsonRootName(value = "tasker")
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
