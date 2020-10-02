@@ -76,7 +76,7 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== TAsker ================================================================================
 
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
