@@ -10,25 +10,25 @@ import seedu.address.model.person.Person;
  */
 public class AddressBookBuilder {
 
-    private Tasker addressBook;
+    private Tasker tasker;
 
     public AddressBookBuilder() {
-        addressBook = new Tasker();
+        tasker = new Tasker();
     }
 
-    public AddressBookBuilder(Tasker addressBook) {
-        this.addressBook = addressBook;
+    public AddressBookBuilder(Tasker tasker) {
+        this.tasker = tasker;
     }
 
     /**
      * Adds a new {@code Person} to the {@code Tasker} that we are building.
      */
     public AddressBookBuilder withPerson(Person person) {
-        addressBook.addPerson(person);
+        tasker.addPerson(person);
         return this;
     }
 
     public Tasker build() {
-        return addressBook;
+        return tasker;
     }
 }

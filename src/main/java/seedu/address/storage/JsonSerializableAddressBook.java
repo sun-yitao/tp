@@ -46,15 +46,15 @@ class JsonSerializableAddressBook {
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public Tasker toModelType() throws IllegalValueException {
-        Tasker addressBook = new Tasker();
+        Tasker tasker = new Tasker();
         for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
             Person person = jsonAdaptedPerson.toModelType();
-            if (addressBook.hasPerson(person)) {
+            if (tasker.hasPerson(person)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
-            addressBook.addPerson(person);
+            tasker.addPerson(person);
         }
-        return addressBook;
+        return tasker;
     }
 
 }
