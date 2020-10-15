@@ -27,7 +27,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/johndoe.md)]
 
 - Role: Team Lead
-- Responsibilities: UI
+- Responsibilities: UI/UX
 
 ### Noel Kwan
 
@@ -66,4 +66,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/johndoe.md)]
 
 - Role: Developer
-- Responsibilities: UI
+- Responsibilities: UI/UX
