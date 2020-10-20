@@ -14,12 +14,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.attendance.Attendance;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MatricNumber;
 import seedu.address.model.person.Name;
@@ -103,8 +106,16 @@ public class EditCommand extends Command {
         MatricNumber updatedMatricnumber = editPersonDescriptor.getMatricNumber()
                 .orElse(personToEdit.getMatricNumber());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        SortedSet<Attendance> updatedAttendances = editPersonDescriptor.getAttendances()
+                .orElse(personToEdit.getAttendances());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedTelegram, updatedMatricnumber, updatedTags);
+        return new Person(updatedName,
+                updatedPhone,
+                updatedEmail,
+                updatedTelegram,
+                updatedMatricnumber,
+                updatedTags,
+                updatedAttendances);
     }
 
     @Override
@@ -136,6 +147,7 @@ public class EditCommand extends Command {
         private Telegram telegram;
         private MatricNumber matricNumber;
         private Set<Tag> tags;
+        private SortedSet<Attendance> attendances;
 
         public EditPersonDescriptor() {}
 
@@ -150,13 +162,14 @@ public class EditCommand extends Command {
             setTelegram(toCopy.telegram);
             setMatricNumber(toCopy.matricNumber);
             setTags(toCopy.tags);
+            setAttendances(toCopy.attendances);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, telegram, matricNumber, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, telegram, matricNumber, tags, attendances);
         }
 
         public void setName(Name name) {
@@ -215,6 +228,25 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        /**
+         * Sets {@code attendances} to this object's {@code attendances}.
+         * A defensive copy of {@code attendances} is used internally.
+         */
+        public void setAttendances(SortedSet<Attendance> attendances) {
+            this.attendances = (attendances != null) ? new TreeSet<>(attendances) : null;
+        }
+
+        /**
+         * Returns an unmodifiable attendances sorted set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code attendances} is null.
+         */
+        public Optional<SortedSet<Attendance>> getAttendances() {
+            return (attendances != null)
+                    ? Optional.of(Collections.unmodifiableSortedSet(attendances))
+                    : Optional.empty();
+        }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -235,7 +267,8 @@ public class EditCommand extends Command {
                     && getEmail().equals(e.getEmail())
                     && getTelegram().equals(e.getTelegram())
                     && getMatricNumber().equals(e.getMatricNumber())
-                    && getTags().equals(e.getTags());
+                    && getTags().equals(e.getTags())
+                    && getAttendances().equals(e.getAttendances());
         }
     }
 }

@@ -10,10 +10,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.attendance.Attendance;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MatricNumber;
 import seedu.address.model.person.Name;
@@ -50,8 +53,10 @@ public class AddCommandParser implements Parser<AddCommand> {
                 argMultimap.getValue(PREFIX_MATRIC_NUMBER).get()
         );
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        SortedSet<Attendance> attendances = new TreeSet<>();
 
-        Person person = new Person(name, phone, email, telegram, matricNumber, tagList);
+
+        Person person = new Person(name, phone, email, telegram, matricNumber, tagList, attendances);
 
         return new AddCommand(person);
     }
