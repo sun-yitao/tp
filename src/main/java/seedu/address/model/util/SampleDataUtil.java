@@ -2,10 +2,13 @@ package seedu.address.model.util;
 
 import java.util.Arrays;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.Tasker;
+import seedu.address.model.attendance.Attendance;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MatricNumber;
 import seedu.address.model.person.Name;
@@ -23,27 +26,33 @@ public class SampleDataUtil {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 new Telegram("alexyeoh"),
                 new MatricNumber("A1234567A"),
-                getTagSet("friends")),
+                getTagSet("F11"),
+                new TreeSet<>()),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Telegram("berniceyu"),
                 new MatricNumber("A0001111B"),
-                getTagSet("colleagues", "friends")),
+                getTagSet("F11", "friends"),
+                new TreeSet<>()),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
                 new Telegram("charlotte"),
                 new MatricNumber("A1111000C"),
-                getTagSet("neighbours")),
+                getTagSet("F11"),
+                new TreeSet<>()),
             new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
                 new Telegram("david"),
                 new MatricNumber("A7654321D"),
-                getTagSet("family")),
+                getTagSet("F11"),
+                new TreeSet<>()),
             new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
                 new Telegram("irfan"),
                 new MatricNumber("A7654321E"),
-                getTagSet("classmates")),
+                getTagSet("F11"),
+                new TreeSet<>()),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Telegram("royba"),
                 new MatricNumber("A1234123F"),
-                getTagSet("colleagues"))
+                getTagSet("F11"),
+                new TreeSet<>())
         };
     }
 
@@ -62,6 +71,15 @@ public class SampleDataUtil {
         return Arrays.stream(strings)
                 .map(Tag::new)
                 .collect(Collectors.toSet());
+    }
+
+    /**
+     * Returns a sorted {@code Attendance} sorted set containing the list of strings given.
+     */
+    public static SortedSet<Attendance> getAttendanceSet(String... dateStrings) {
+        return new TreeSet<>(Arrays.stream(dateStrings)
+                .map(Attendance::fromDateString)
+                .collect(Collectors.toSet()));
     }
 
 }

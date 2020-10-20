@@ -6,7 +6,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
+import seedu.address.model.attendance.Attendance;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -24,6 +27,7 @@ public class Person {
 
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
+    private final SortedSet<Attendance> attendances = new TreeSet<>();
 
     /**
      * Every field must be present and not null.
@@ -33,14 +37,16 @@ public class Person {
                   Email email,
                   Telegram telegram,
                   MatricNumber matricNumber,
-                  Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, tags);
+                  Set<Tag> tags,
+                  SortedSet<Attendance> attendances) {
+        requireAllNonNull(name, phone, email, tags, attendances);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.telegram = telegram;
         this.matricNumber = matricNumber;
         this.tags.addAll(tags);
+        this.attendances.addAll(attendances);
     }
     public Name getName() {
         return name;
@@ -68,6 +74,14 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    /**
+     * Returns an immutable attendance sorted set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public SortedSet<Attendance> getAttendances() {
+        return Collections.unmodifiableSortedSet(attendances);
     }
 
     /**
@@ -104,13 +118,14 @@ public class Person {
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getTelegram().equals(getTelegram())
                 && otherPerson.getMatricNumber().equals(getMatricNumber())
-                && otherPerson.getTags().equals(getTags());
+                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getAttendances().equals(getAttendances());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, telegram, matricNumber, tags);
+        return Objects.hash(name, phone, email, telegram, matricNumber, tags, attendances);
     }
 
     @Override
