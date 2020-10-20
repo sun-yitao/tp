@@ -2,7 +2,10 @@ package seedu.address.testutil;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
+import seedu.address.model.attendance.Attendance;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MatricNumber;
 import seedu.address.model.person.Name;
@@ -29,6 +32,7 @@ public class PersonBuilder {
     private Telegram telegram;
     private MatricNumber matricNumber;
     private Set<Tag> tags;
+    private SortedSet<Attendance> attendances;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -40,6 +44,7 @@ public class PersonBuilder {
         telegram = new Telegram(DEFAULT_TELEGRAM);
         matricNumber = new MatricNumber(DEFAULT_MATRIC_NUMBER);
         tags = new HashSet<>();
+        attendances = new TreeSet<>();
     }
 
     /**
@@ -52,6 +57,7 @@ public class PersonBuilder {
         telegram = personToCopy.getTelegram();
         matricNumber = personToCopy.getMatricNumber();
         tags = new HashSet<>(personToCopy.getTags());
+        attendances = new TreeSet<>(personToCopy.getAttendances());
     }
 
     /**
@@ -102,8 +108,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Parses the {@code attendances} into a {@code SortedSet<Attendances>} and set it to the {@code Person} that we are building.
+     */
+    public PersonBuilder withAttendance(String ... attendances) {
+        this.attendances = SampleDataUtil.getAttendanceSet(attendances);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, telegram, matricNumber, tags);
+        return new Person(name, phone, email, telegram, matricNumber, tags, attendances);
     }
 
 }
