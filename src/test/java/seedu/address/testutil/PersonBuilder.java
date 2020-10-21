@@ -103,15 +103,16 @@ public class PersonBuilder {
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
      */
-    public PersonBuilder withTags(String ... tags) {
+    public PersonBuilder withTags(String... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
 
     /**
-     * Parses the {@code attendances} into a {@code SortedSet<Attendances>} and set it to the {@code Person} that we are building.
+     * Parses the {@code attendances} into a {@code SortedSet<Attendances>} and set it to the {@code Person} that we are
+     * building.
      */
-    public PersonBuilder withAttendance(String ... attendances) {
+    public PersonBuilder withAttendance(String... attendances) {
         this.attendances = SampleDataUtil.getAttendanceSet(attendances);
         return this;
     }

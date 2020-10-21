@@ -33,7 +33,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final String telegram;
     private final String matricNumber;
-    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final List<JsonAdaptedAttendance> attendances = new ArrayList<>();
 
     /**
@@ -43,15 +43,15 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
                              @JsonProperty("email") String email, @JsonProperty("telegram") String telegram,
                              @JsonProperty("matricNumber") String matricNumber,
-                             @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags,
                              @JsonProperty("attendances") List<JsonAdaptedAttendance> attendances) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.telegram = telegram;
         this.matricNumber = matricNumber;
-        if (tagged != null) {
-            this.tagged.addAll(tagged);
+        if (tags != null) {
+            this.tags.addAll(tags);
         }
         if (attendances != null) {
             this.attendances.addAll(attendances);
@@ -67,7 +67,7 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         telegram = source.getTelegram().telegram;
         matricNumber = source.getMatricNumber().value;
-        tagged.addAll(source.getTags().stream()
+        tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         attendances.addAll(source.getAttendances().stream()
@@ -82,7 +82,7 @@ class JsonAdaptedPerson {
      */
     public Person toModelType() throws IllegalValueException {
         final List<Tag> personTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tagged) {
+        for (JsonAdaptedTag tag : tags) {
             personTags.add(tag.toModelType());
         }
 
