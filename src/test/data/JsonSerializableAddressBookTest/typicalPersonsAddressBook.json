@@ -7,7 +7,8 @@
       "email": "alice@example.com",
       "telegram": "alice_p",
       "matricNumber": "A1234567B",
-      "tagged": ["friends"]
+      "tags": ["friends"],
+      "attendances": ["27/03/1998"]
     },
     {
       "name": "Benson Meier",
@@ -15,7 +16,8 @@
       "email": "johnd@example.com",
       "telegram": "bm_99",
       "matricNumber": "A3256548H",
-      "tagged": ["owesMoney", "friends"]
+      "tags": ["owesMoney", "friends"],
+      "attendances": ["27/03/1998", "27/04/1998"]
     },
     {
       "name": "Carl Kurz",
@@ -23,7 +25,8 @@
       "email": "heinz@example.com",
       "telegram": "cKurzzz",
       "matricNumber": "A9876543D",
-      "tagged": []
+      "tags": [],
+      "attendances": ["27/03/1998"]
     },
     {
       "name": "Daniel Meier",
@@ -31,7 +34,8 @@
       "email": "cornelia@example.com",
       "telegram": "12345",
       "matricNumber": "A1010101B",
-      "tagged": ["friends"]
+      "tags": ["friends"],
+      "attendances": ["27/03/1998"]
     },
     {
       "name": "Elle Meyer",
@@ -39,7 +43,8 @@
       "email": "werner@example.com",
       "telegram": "ElleMeyer",
       "matricNumber": "A9999999F",
-      "tagged": []
+      "tags": [],
+      "attendances": ["27/03/1998"]
     },
     {
       "name": "Fiona Kunz",
@@ -47,7 +52,8 @@
       "email": "lydia@example.com",
       "telegram": "Fiona_Kunz_",
       "matricNumber": "A5763762P",
-      "tagged": []
+      "tags": [],
+      "attendances": ["27/03/1998"]
     },
     {
       "name": "George Best",
@@ -55,7 +61,8 @@
       "email": "anna@example.com",
       "telegram": "_gbest",
       "matricNumber": "A6372632E",
-      "tagged": []
+      "tags": [],
+      "attendances": ["27/03/1998"]
     }
   ]
 }

@@ -6,7 +6,7 @@
       "email": "alice@example.com",
       "telegram": "alice_p",
       "matricNumber": "A1234567H",
-      "tagged": ["friends"]
+      "tags": ["friends"]
     },
     {
       "name": "Alice Pauline",
