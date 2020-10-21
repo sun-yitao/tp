@@ -31,7 +31,7 @@ public class SampleDataUtil {
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Telegram("berniceyu"),
                 new MatricNumber("A0001111B"),
-                getTagSet("F11", "friends"),
+                getTagSet("F11"),
                 new TreeSet<>()),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
                 new Telegram("charlotte"),
