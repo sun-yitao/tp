@@ -20,6 +20,7 @@ class JsonAdaptedAttendance {
      */
     @JsonCreator
     public JsonAdaptedAttendance(String dateString) {
+        assert(dateString != null && !dateString.equals(""));
         this.dateString = dateString;
     }
 
@@ -32,6 +33,7 @@ class JsonAdaptedAttendance {
 
     @JsonValue
     public String getDateString() {
+        assert(dateString != null && !dateString.equals(""));
         return dateString;
     }
 
@@ -40,6 +42,7 @@ class JsonAdaptedAttendance {
      *
      */
     public Attendance toModelType() {
+        assert(dateString != null && !dateString.equals(""));
         return Attendance.fromDateString(dateString);
     }
 

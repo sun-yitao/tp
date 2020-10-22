@@ -60,6 +60,7 @@ public class Attendance implements Comparable<Attendance> {
 
     @Override
     public int compareTo(Attendance o) {
+        assert(this.date != null);
         return this.date.compareTo(o.date);
     }
 }
