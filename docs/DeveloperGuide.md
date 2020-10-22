@@ -165,13 +165,17 @@ the `EditCommand`, `EditPersonDescriptor` and `EditCommandParser` classes were u
 the `LogicManager#execute(commandText)` method.
 2. `AddressBookParser` is then called with it's `parseCommand(userInput)` method to parse input, which in turns creates 
 a new `EditCommandParser` object.
-3. The `EditCommandParser` object calls its own `parse` method with the `" 1 p/91234567 m/A1234567Z"` as input.
+3. The `EditCommandParser` object calls its own `parse` method with `" 1 p/91234567 m/A1234567Z"` as input.
 4. Now, the `" 1 p/91234567 m/A1234567Z"` argument is broken down into an `Index` and tokens in an `ArgumentMultiMap` 
-based on the field prefixes, and an `EditPersonDescriptor` object is created and used to store the fields that are 
-present in the `ArgumentMultiMap`.
+based on the field prefixes. Subsequently, an `EditPersonDescriptor` object is created and used to store the fields that 
+are present in the `ArgumentMultiMap`.
 5. For valid inputs, an `EditCommand` object is then created with the `Index` and `EditPersonDescriptor` as inputs.
 6. Our new `EditCommand` object calls its own `execute` method with the `model` field of `LogicManager` as input.
 7. Lastly, a new `CommandResult` with the relevant message is finally returned to `LogicManager`. 
+
+All of these details and interactions are captured in the sequence diagram below.
+
+![UpdateStudentSequenceDiagram](images/UpdateStudentSequenceDiagram.png)
 
 ### \[Proposed\] Undo/redo feature
 
