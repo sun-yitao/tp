@@ -134,6 +134,24 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Update Student data
+`TAsker` also supports the updating of student data. With the aforementioned extension of fields, the update feature now 
+encompasses both the 'MatricNumber' and 'Telegram' fields as well. When the `edit <INDEX_TO_UPDATE> <FIELDS_TO_UPDATE>`
+command is inputted, the fields provided in `<FIELDS_TO_UPDATE>` will be updated for the student with the specific 
+`<INDEX_TO_UPDATE>` on the GUI. `<FIELDS_TO_UPDATE>` should adhere to the following syntax:
+
+| Field        | Syntax              |
+|:------------:|:-------------------:|
+| Name         | n/< NAME >          |
+| Phone Number | p/< PHONE >         |
+| Email        | e/< EMAIL >         |
+| Telegram User| t/< TELEGRAM >      |
+| Matric Number| m/< MATRIC_NUMBER > | 
+| Tag          | tg/< TAG >          |
+
+More than one tag can be provided and inputting tg/ without specifying any tags after it removes all existing tags.
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
