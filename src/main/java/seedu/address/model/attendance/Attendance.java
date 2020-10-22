@@ -1,5 +1,8 @@
 package seedu.address.model.attendance;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +19,11 @@ public class Attendance implements Comparable<Attendance> {
 
     public final Date date;
 
-    public Attendance(Date date) {
+    /**
+     * Users should only use fromDateString to safely generate Attendance
+     * @param date
+     */
+    private Attendance(Date date) {
         this.date = date;
     }
 
@@ -27,11 +34,13 @@ public class Attendance implements Comparable<Attendance> {
      * @return {@code Attendance} that corresponds to the input date
      */
     public static final Attendance fromDateString(String input) {
+        requireNonNull(input);
         Date date;
         try {
             date = DATE_FORMAT.parse(input);
         } catch (ParseException e) {
-            return null;
+            checkArgument(false, MESSAGE_CONSTRAINTS);
+            return null; // Never triggers as the above will throw an invalid argument exception
         }
         return new Attendance(date);
     }
