@@ -136,13 +136,12 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Update Student data
 `TAsker` also supports the updating of student data. With the aforementioned extension of fields, the update feature now 
-encompasses both the 'MatricNumber' and 'Telegram' fields as well. 
+encompasses both the `MatricNumber` and `Telegram` fields as well. 
 
-When the `edit <INDEX_TO_UPDATE> <FIELDS_TO_UPDATE>`
-command is inputted, the fields provided in `<FIELDS_TO_UPDATE>` will be updated for the student with the specific 
-`<INDEX_TO_UPDATE>` on the GUI. 
+When the `edit <INDEX_TO_UPDATE> <FIELDS_TO_UPDATE>` command is inputted, the fields provided in `<FIELDS_TO_UPDATE>` 
+will be updated for the student with the specific `<INDEX_TO_UPDATE>` on the GUI. 
 
-`<FIELDS_TO_UPDATE>` should adhere to the following syntax:
+Fields in `<FIELDS_TO_UPDATE>` should adhere to the following syntax:
 
 | Field        | Syntax              |
 |:------------:|:-------------------:|
@@ -155,6 +154,12 @@ command is inputted, the fields provided in `<FIELDS_TO_UPDATE>` will be updated
 
 More than one tag can be provided and inputting tg/ without specifying any tags after it removes all existing tags.
 
+#### Implementation
+The edit mechanism is facilitated by `EditCommand`. It extends `Command` with the index to update and fields to update,
+stored internally as and `Index` and `EditPersonDescriptor` respectively. Additionally, the `EditCommand` is parsed by 
+the `EditCommandParser`. Thus, to implement the edit feature with the additional fields of `MatricNumber` and `Telegram`,
+the `EditCommand`, `EditPersonDescriptor` and `EditCommandParser` class have to be updated to include `MatricNumber` 
+and `Telegram`.
 
 ### \[Proposed\] Undo/redo feature
 
