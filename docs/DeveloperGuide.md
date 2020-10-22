@@ -156,10 +156,23 @@ More than one tag can be provided and inputting tg/ without specifying any tags 
 
 #### Implementation
 The edit mechanism is facilitated by `EditCommand`. It extends `Command` with the index to update and fields to update,
-stored internally as and `Index` and `EditPersonDescriptor` respectively. Additionally, the `EditCommand` is parsed by 
+stored internally as `Index` and `EditPersonDescriptor` respectively. Additionally, the `EditCommand` is created by 
 the `EditCommandParser`. Thus, to implement the edit feature with the additional fields of `MatricNumber` and `Telegram`,
-the `EditCommand`, `EditPersonDescriptor` and `EditCommandParser` class have to be updated to include `MatricNumber` 
-and `Telegram`.
+the `EditCommand`, `EditPersonDescriptor` and `EditCommandParser` classes have to be updated to include these fields.
+
+#### Sequence of action
+1. `LogicManager` processes the user input, for instance `"edit 1 p/91234567 m/A1234567Z"`, with 
+the `LogicManager#execute(commandText)` method.
+2. `AddressBookParser` is then called with it's `parseCommand(userInput)` method to parse input, which in turns creates 
+a new `EditCommandParser` object.
+3. The `EditCommandParser` object calls its own `parse` method with the `" 1 p/91234567 m/A1234567Z"` as input.
+4. Now, the `" 1 p/91234567 m/A1234567Z"` argument is broken down into an `Index` and tokens in an `ArgumentMultiMap` 
+based on the field prefixes. 
+5. An `EditPersonDescriptor` object is created and used to store the fields that are present in the 
+`ArgumentMultiMap`.
+6. For valid inputs, an `EditCommand` object is then created with the `Index` and `EditPersonDescriptor` as inputs.
+7. Our new `EditCommand` object calls its own `execute` method with the `model` field of `LogicManager` as input.
+8. Lastly, a new `CommandResult` with the relevant message is finally returned to `LogicManager`. 
 
 ### \[Proposed\] Undo/redo feature
 
