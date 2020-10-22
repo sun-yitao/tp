@@ -68,12 +68,65 @@ The sections below give more details of each component.
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-1/tp/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-1/tp/tree/master/src/main/resources/view/MainWindow.fxml)
-
 The `UI` component,
 
 - Executes user commands using the `Logic` component.
 - Listens for changes to `Model` data so that the UI can be updated with the modified data.
+
+#### UI Styling
+
+The `UI` component uses JavaFX UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-1/tp/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-1/tp/tree/master/src/main/resources/view/MainWindow.fxml).
+
+The `MainWindow` FXML file also references a CSS stylesheet [`TaskerTheme.css`](https://github.com/AY2021S1-CS2103T-F11-1/tp/blob/master/src/main/resources/view/TaskerTheme.css), which gives the JavaFX UI component modularity with certain UI variables (e.g. primary colors, etc.).
+
+At the CSS file's header, we have:
+
+```css
+* {
+  -fx-tasker-base-color: #ffffff;
+  -fx-tasker-base-color-darker: #ffffff;
+  -fx-tasker-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  -fx-primary-color: #00089c;
+  -fx-primary-lighter: #99cfff;
+  -fx-primary-bg: #bde0ff;
+}
+```
+
+The `font-family` has been set to the default sans-serif fonts of respective operating systems, so that the displayed font will be consistent with the user's browsing experiences on other applications, providing a sense of familiarity when interacting with the UI.
+
+CSS variables like the base color or font-family are set in the root CSS class (`*`), and these variables can be referenced by other CSS selectors.
+
+For example:
+
+```css
+#resultDisplay {
+  -fx-font-family: -fx-tasker-font-family;
+  /* other CSS styles */
+}
+```
+
+The CSS stylesheet also offers developers advanced control over the appearance of intermediate states (hovered, selected, etc.) with CSS pseudo-classes.
+
+For example:
+
+```css
+#commandTextField {
+  -fx-border-color: -fx-primary-lighter;
+  /* other CSS properties */
+}
+
+#commandTextField:hover {
+  -fx-border-color: -fx-primary-color;
+}
+
+#commandTextField:focused {
+  -fx-border-color: -fx-primary-color;
+}
+```
+
+This gives us finer control over the UI appearance, to create a more interactive UI that better responds to the user's interactions.
 
 ### Logic component
 
