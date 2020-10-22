@@ -140,7 +140,7 @@ Querying the data of all current students in TAsker is really simple. Once the `
 phone number, telegram tag, matric number, email, tutorial classes and attendance record of all students are displayed
 on TAsker's GUI.
 
-#### Sequence of action 
+#### Sequence of action
 
 1. `LogicManager` processes the user input "list".
 2. AddressBookParser is called with it's `parseCommand(userInput)` method to parse input, which returns a new
@@ -148,7 +148,7 @@ on TAsker's GUI.
 3. Our new `ListCommand` object calls its own `execute` method with the `model` field of `LogicManager` as input.
 4. Within the `ListCommand#execute` method, the `model` field calls its own `updateFilteredPersonList` method to update
    the list to show all persons.
-5. Lastly, a new `CommandResult` with the relevant success message is finally returned to `LogicManager`.   
+5. Lastly, a new `CommandResult` with the relevant success message is finally returned to `LogicManager`.
 
 All of these details and interactions are captured in the sequence diagram below.
 
@@ -156,27 +156,63 @@ All of these details and interactions are captured in the sequence diagram below
 
 ### Find a student's data
 
-Querying the data of a specific student in TAsker is just as simple as finding all. Once the `find <NAME>` command 
-is inputted, the name,
-phone number, telegram tag, matric number, email, tutorial classes and attendance record of the specific student 
-is displayed on TAsker's GUI.
+Querying the data of a specific student in TAsker is just as simple as finding all. Once the `find <NAME>` command
+is inputted, the name, phone number, telegram tag, matric number, email, tutorial classes and attendance record of the
+specific student is displayed on TAsker's GUI.
 
-#### Sequence of action 
+#### Sequence of action
 
 1. `LogicManager` processes the user input "find Roy", for example.
-2. AddressBookParser is called with it's `parseCommand(userInput)` method to parse input, which in turns creates a 
- new `FindCommandParser` object
+2. AddressBookParser is called with it's `parseCommand(userInput)` method to parse input, which in turns creates a
+ new `FindCommandParser` object.
 3. The `FindCommandParser` object calls its own `parse` method with the `" Roy"` as input.
-4. Now, the `" Roy"` argument is broken down into its individual strings, with whitespace removed and into an array, 
+4. Now, the `" Roy"` argument is broken down into its individual strings, with whitespace removed and into an array,
    which is processed and used as predicate for filtering out the desired student.
 5. Within the `ListCommand#execute` method, the `model` field calls its own `updateFilteredPersonList` method to update
    the list to show all persons.
 6. Our new `ListCommand` object calls its own `execute` method with the `model` field of `LogicManager` as input.
-7. Lastly, a new `CommandResult` with the relevant message is finally returned to `LogicManager`.   
+7. Lastly, a new `CommandResult` with the relevant message is finally returned to `LogicManager`.
 
 All of these details and interactions are captured in the sequence diagram below.
 
 ![ListStudentSequenceDiagram](images/FindStudentSequenceDiagram.png)
+
+### Update Student data
+`TAsker` also supports the updating of student data. With the aforementioned extension of fields, the update feature now
+encompasses both the `MatricNumber` and `Telegram` fields as well.
+
+When the `edit <INDEX_TO_UPDATE> <FIELDS_TO_UPDATE>` command is inputted, the fields provided in `<FIELDS_TO_UPDATE>`
+ will be updated for the student with the specific `<INDEX_TO_UPDATE>` on the GUI.
+
+Fields in `<FIELDS_TO_UPDATE>` should adhere to the following syntax:
+
+| Field        | Syntax              |
+|:------------:|:-------------------:|
+| Name         | n/< NAME >          |
+| Phone Number | p/< PHONE >         |
+| Email        | e/< EMAIL >         |
+| Telegram User| t/< TELEGRAM >      |
+| Matric Number| m/< MATRIC_NUMBER > |
+| Tag          | tg/< TAG >          |
+
+More than one tag can be provided and inputting tg/ without specifying any tags after it removes all existing tags.
+
+#### Sequence of action
+1. `LogicManager` processes the user input, for instance `"edit 1 p/91234567 m/A1234567Z"`, with
+the `LogicManager#execute(commandText)` method.
+2. `AddressBookParser` is then called with it's `parseCommand(userInput)` method to parse input, which in turns creates
+a new `EditCommandParser` object.
+3. The `EditCommandParser` object calls its own `parse` method with `" 1 p/91234567 m/A1234567Z"` as input.
+4. Now, the `" 1 p/91234567 m/A1234567Z"` argument is broken down into an `Index` and tokens in an `ArgumentMultiMap`
+based on the field prefixes. Subsequently, an `EditPersonDescriptor` object is created and used to store the fields that
+are present in the `ArgumentMultiMap`.
+5. For valid inputs, an `EditCommand` object is then created with the `Index` and `EditPersonDescriptor` as inputs.
+6. Our new `EditCommand` object calls its own `execute` method with the `model` field of `LogicManager` as input.
+7. Lastly, a new `CommandResult` with the relevant message is finally returned to `LogicManager`.
+
+All of these details and interactions are captured in the sequence diagram below.
+
+![UpdateStudentSequenceDiagram](images/UpdateStudentSequenceDiagram.png)
 
 ### Create Student data
 
