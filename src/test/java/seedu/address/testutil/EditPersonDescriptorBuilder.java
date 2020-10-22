@@ -1,10 +1,13 @@
 package seedu.address.testutil;
 
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.model.attendance.Attendance;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MatricNumber;
 import seedu.address.model.person.Name;
@@ -39,6 +42,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setTelegram(person.getTelegram());
         descriptor.setMatricNumber(person.getMatricNumber());
         descriptor.setTags(person.getTags());
+        descriptor.setAttendances(person.getAttendances());
     }
 
     /**
@@ -89,6 +93,18 @@ public class EditPersonDescriptorBuilder {
     public EditPersonDescriptorBuilder withTags(String... tags) {
         Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
         descriptor.setTags(tagSet);
+        return this;
+    }
+
+    /**
+     * Parses the {@code attendances} into a {@code SortedSet<Attendance>} and set it to the {@code
+     * EditPersonDescriptor}
+     * that we are building.
+     */
+    public EditPersonDescriptorBuilder withAttendances(String... attendances) {
+        SortedSet<Attendance> attendanceSet =
+            new TreeSet<>(Stream.of(attendances).map(Attendance::fromDateString).collect(Collectors.toSet()));
+        descriptor.setAttendances(attendanceSet);
         return this;
     }
 

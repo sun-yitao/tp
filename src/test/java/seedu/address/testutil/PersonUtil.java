@@ -51,9 +51,9 @@ public class PersonUtil {
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getTelegram().ifPresent(telegram -> sb.append(PREFIX_TELEGRAM).append(telegram.telegram)
-                .append(" "));
+            .append(" "));
         descriptor.getMatricNumber().ifPresent(matricNumber -> sb.append(PREFIX_MATRIC_NUMBER)
-                .append(matricNumber.value).append(" "));
+            .append(matricNumber.value).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {

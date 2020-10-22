@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.attendance.Attendance;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MatricNumber;
 import seedu.address.model.person.Name;
@@ -30,22 +33,28 @@ class JsonAdaptedPerson {
     private final String email;
     private final String telegram;
     private final String matricNumber;
-    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final List<JsonAdaptedAttendance> attendances = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("telegram") String telegram,
-            @JsonProperty("matricNumber") String matricNumber, @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+                             @JsonProperty("email") String email, @JsonProperty("telegram") String telegram,
+                             @JsonProperty("matricNumber") String matricNumber,
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags,
+                             @JsonProperty("attendances") List<JsonAdaptedAttendance> attendances) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.telegram = telegram;
         this.matricNumber = matricNumber;
-        if (tagged != null) {
-            this.tagged.addAll(tagged);
+        if (tags != null) {
+            this.tags.addAll(tags);
+        }
+        if (attendances != null) {
+            this.attendances.addAll(attendances);
         }
     }
 
@@ -58,8 +67,11 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         telegram = source.getTelegram().telegram;
         matricNumber = source.getMatricNumber().value;
-        tagged.addAll(source.getTags().stream()
+        tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
+                .collect(Collectors.toList()));
+        attendances.addAll(source.getAttendances().stream()
+                .map(JsonAdaptedAttendance::new)
                 .collect(Collectors.toList()));
     }
 
@@ -70,9 +82,14 @@ class JsonAdaptedPerson {
      */
     public Person toModelType() throws IllegalValueException {
         final List<Tag> personTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tagged) {
+        for (JsonAdaptedTag tag : tags) {
             personTags.add(tag.toModelType());
         }
+
+        final SortedSet<Attendance> personAttendances = new TreeSet<Attendance>(attendances.stream()
+                .map(JsonAdaptedAttendance::toModelType)
+                .collect(Collectors.toSet())
+        );
 
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
@@ -108,9 +125,17 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     MatricNumber.class.getSimpleName()));
         }
+
         final MatricNumber modelMatricNumber = new MatricNumber(matricNumber);
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelTelegram, modelMatricNumber, modelTags);
+
+        return new Person(modelName,
+                modelPhone,
+                modelEmail,
+                modelTelegram,
+                modelMatricNumber,
+                modelTags,
+                personAttendances);
     }
 
 }

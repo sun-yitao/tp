@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MATRIC_NUMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -40,6 +41,8 @@ public class CommandTestUtil {
     public static final String VALID_MATRIC_NUMBER_BOB = "A9876543C";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_ATTENDANCE_AMY = "27/03/1998";
+    public static final String VALID_ATTENDANCE_BOB = "27/05/2020";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -53,6 +56,8 @@ public class CommandTestUtil {
     public static final String MATRIC_NUMBER_DESC_BOB = " " + PREFIX_MATRIC_NUMBER + VALID_MATRIC_NUMBER_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
+    public static final String ATTENDANCE_DESC_AMY = " " + PREFIX_DATE + VALID_ATTENDANCE_AMY;
+    public static final String ATTENDANCE_DESC_BOB = " " + PREFIX_DATE + VALID_ATTENDANCE_BOB;
 
     // '&' not allowed in names
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&";
@@ -68,6 +73,8 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS;
     // '*' not allowed in tags
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*";
+    // invalid attendance date
+    public static final String INVALID_ATTENDANCE_DESC = " " + PREFIX_DATE + "mar 27";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
