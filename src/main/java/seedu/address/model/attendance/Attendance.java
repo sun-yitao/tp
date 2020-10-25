@@ -20,10 +20,10 @@ public class Attendance implements Comparable<Attendance> {
     public final Date date;
 
     /**
-     * Users should only use fromDateString to safely generate Attendance
-     * @param date
+     * Creates a new {@code Attendance} using a {@code Date}
+     * @param date {@code Date} that corresponds to input date
      */
-    private Attendance(Date date) {
+    public Attendance(Date date) {
         assert date != null;
         this.date = date;
     }
@@ -34,7 +34,7 @@ public class Attendance implements Comparable<Attendance> {
      * @param input date string in dd/MM/yyyy
      * @return {@code Attendance} that corresponds to the input date
      */
-    public static final Attendance fromDateString(String input) {
+    public static Attendance fromDateString(String input) {
         requireNonNull(input);
         Date date;
         try {
