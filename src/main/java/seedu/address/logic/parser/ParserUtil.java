@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.attendance.Attendance;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.MatricNumber;
 import seedu.address.model.person.Name;
@@ -136,4 +137,20 @@ public class ParserUtil {
         }
         return tagSet;
     }
+
+    /**
+     * Creates an {@code Attendance} by parsing the input date.
+     * @param input Input date string
+     * @return {@code Attendance}
+     * @throws ParseException if date cannot be parsed
+     */
+    public static Attendance parseAttendance(String input) throws ParseException {
+        requireNonNull(input);
+        try {
+            return Attendance.fromDateString(input);
+        } catch (IllegalArgumentException e) {
+            throw new ParseException(Attendance.MESSAGE_CONSTRAINTS);
+        }
+    }
+
 }
