@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ATTENDANCE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
@@ -26,19 +27,18 @@ import seedu.address.testutil.PersonBuilder;
  */
 public class AttendCommandTest {
 
-    private static final String ATTENDANCE_1_STRING = "01/01/2020";
-    private static final Attendance ATTENDANCE_1 = Attendance.fromDateString(ATTENDANCE_1_STRING);
-    private static final String DEFAULT_ATTENDANCE_STRING = "27/03/1998";
-    private static final Attendance DEFAULT_ATTENDANCE = Attendance.fromDateString(DEFAULT_ATTENDANCE_STRING);
+    private static final String NEW_ATTENDANCE_STRING = "01/01/2020";
+    private static final Attendance NEW_ATTENDANCE = Attendance.fromDateString(NEW_ATTENDANCE_STRING);
+    private static final Attendance AMY_ATTENDANCE = Attendance.fromDateString(VALID_ATTENDANCE_AMY);
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Person attendedPerson = model.getFilteredPersonList().get(0);
-        attendedPerson = new PersonBuilder(attendedPerson).withAttendance(
-                DEFAULT_ATTENDANCE_STRING, ATTENDANCE_1_STRING).build();
-        AttendCommand attendCommand = new AttendCommand(INDEX_FIRST_PERSON, ATTENDANCE_1);
+        attendedPerson = new PersonBuilder(attendedPerson)
+                .withAttendance(VALID_ATTENDANCE_AMY, NEW_ATTENDANCE_STRING).build();
+        AttendCommand attendCommand = new AttendCommand(INDEX_FIRST_PERSON, NEW_ATTENDANCE);
 
         String expectedMessage = String.format(AttendCommand.MESSAGE_ATTEND_SUCCESS, attendedPerson);
 
@@ -54,8 +54,8 @@ public class AttendCommandTest {
 
         Person personInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person attendedPerson = new PersonBuilder(personInFilteredList)
-                .withAttendance(DEFAULT_ATTENDANCE_STRING, ATTENDANCE_1_STRING).build();
-        AttendCommand attendCommand = new AttendCommand(INDEX_FIRST_PERSON, ATTENDANCE_1);
+                .withAttendance(VALID_ATTENDANCE_AMY, NEW_ATTENDANCE_STRING).build();
+        AttendCommand attendCommand = new AttendCommand(INDEX_FIRST_PERSON, NEW_ATTENDANCE);
 
         String expectedMessage = String.format(AttendCommand.MESSAGE_ATTEND_SUCCESS, attendedPerson);
 
@@ -78,16 +78,16 @@ public class AttendCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person personToAttend = model.getAddressBook().getPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        AttendCommand attendCommand = new AttendCommand(INDEX_FIRST_PERSON, DEFAULT_ATTENDANCE);
+        AttendCommand attendCommand = new AttendCommand(INDEX_FIRST_PERSON, AMY_ATTENDANCE);
 
         assertCommandFailure(attendCommand, model, String.format(AttendCommand.MESSAGE_ALREADY_ATTENDED,
-                personToAttend.getName(), DEFAULT_ATTENDANCE));
+                personToAttend.getName(), AMY_ATTENDANCE));
     }
 
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        AttendCommand attendCommand = new AttendCommand(outOfBoundIndex, ATTENDANCE_1);
+        AttendCommand attendCommand = new AttendCommand(outOfBoundIndex, NEW_ATTENDANCE);
 
         assertCommandFailure(attendCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
@@ -103,7 +103,7 @@ public class AttendCommandTest {
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
 
-        AttendCommand attendCommand = new AttendCommand(outOfBoundIndex, ATTENDANCE_1);
+        AttendCommand attendCommand = new AttendCommand(outOfBoundIndex, NEW_ATTENDANCE);
 
         assertCommandFailure(attendCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
@@ -113,14 +113,14 @@ public class AttendCommandTest {
         Index index1 = Index.fromOneBased(1);
         Index index2 = Index.fromOneBased(2);
 
-        AttendCommand attendCommand1 = new AttendCommand(index1, ATTENDANCE_1);
-        AttendCommand attendCommand2 = new AttendCommand(index2, ATTENDANCE_1);
+        AttendCommand attendCommand1 = new AttendCommand(index1, NEW_ATTENDANCE);
+        AttendCommand attendCommand2 = new AttendCommand(index2, NEW_ATTENDANCE);
 
         // same object -> returns true
         assertTrue(attendCommand1.equals(attendCommand1));
 
         // same values -> returns true
-        AttendCommand attendCommand1Copy = new AttendCommand(index1, ATTENDANCE_1);
+        AttendCommand attendCommand1Copy = new AttendCommand(index1, NEW_ATTENDANCE);
         assertTrue(attendCommand1.equals(attendCommand1Copy));
 
         // different types -> returns false
