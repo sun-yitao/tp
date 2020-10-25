@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
 import java.util.SortedSet;
@@ -52,10 +53,15 @@ public class AttendCommand extends Command {
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
+        if (attendance == null) {
+            throw new CommandException(
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AttendCommand.MESSAGE_USAGE));
+        }
 
         Person personToAttend = lastShownList.get(targetIndex.getZeroBased());
         Person attendedPerson = updateAttendanceForPerson(personToAttend, attendance);
         model.setPerson(personToAttend, attendedPerson);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_ATTEND_SUCCESS, personToAttend));
     }
 
