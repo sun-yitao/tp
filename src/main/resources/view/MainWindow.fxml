@@ -44,16 +44,29 @@
           </padding>
         </StackPane>
 
-        <VBox fx:id="personList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets bottom="10" left="10" right="10" top="10" />
-          </padding>
-          <StackPane fx:id="personListPanelPlaceholder" style="-fx-background-color: white;" VBox.vgrow="ALWAYS" />
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-        </VBox>
-
+        <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+          <tabs>
+            <Tab fx:id="studentData" text="Students">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <VBox fx:id="personList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                  <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                  </padding>
+                  <StackPane fx:id="personListPanelPlaceholder" style="-fx-background-color: white;" VBox.vgrow="ALWAYS" />
+                  <VBox.margin>
+                    <Insets bottom="10.0" top="10.0" />
+                  </VBox.margin>
+                </VBox>
+              </content>
+            </Tab>
+            <Tab fx:id="studentAttendance" text="Attendance">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
         <StackPane fx:id="statusbarPlaceholder" style="-fx-background-color: #ffffff; -fx-border-color: #dd658b transparent transparent transparent; -fx-border-width: 2px 0 0 0;" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
