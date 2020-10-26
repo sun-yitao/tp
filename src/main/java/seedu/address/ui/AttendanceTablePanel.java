@@ -26,16 +26,16 @@ public class AttendanceTablePanel extends UiPart<Region> {
     private TableColumn<Person, String> attendanceCol;
 
     /**
-     * Creates a {@code AttendanceListPanel} with the given {@code ObservableList}.
+     * Creates a {@code AttendanceTablePanel} with the given {@code ObservableList}.
      */
     public AttendanceTablePanel(ObservableList<Person> personList) {
         super(FXML);
 
         nameCol.setCellValueFactory(
-                new PropertyValueFactory<Person,String>("name")
+                new PropertyValueFactory<Person, String>("name")
         );
         attendanceCol.setCellValueFactory(
-                new PropertyValueFactory<Person,String>("attendances")
+                new PropertyValueFactory<Person, String>("attendances")
         );
 
         attendanceTableView.setItems(personList);
