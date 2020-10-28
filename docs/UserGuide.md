@@ -180,6 +180,14 @@ e.g. running this command will create a file called `tasker_2020-09-13_1041` con
 
 Format: `archive`
 
+### Exporting attendance : `exportatt`
+
+Exports attendance to a csv file in `data/attendance_YYYY-MM-DD_HHmm.csv`
+
+e.g. Running this command will create a new csv file called `attendance_2020-09-13_1041.csv`, in your `/data` folder. Each column corresponds to a student and each row corresponds to a date. Every cell is marked with either `ATTENDED` or `ABSENT` depending on whether the student has attended that day.
+
+Format: `exportatt`
+
 ---
 
 ## FAQ

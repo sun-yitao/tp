@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.LogicManager.FILE_OPS_ERROR_MESSAGE;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -67,7 +68,10 @@ public class ExportAttendanceCommand extends Command {
             csvHeaders[i + 1] = person.getName().toString();
         }
 
-        FileWriter out = new FileWriter(filePath);
+        File file = new File(filePath);
+        // make sure parent dir exists (else created)
+        file.getParentFile().mkdirs();
+        FileWriter out = new FileWriter(file);
         CSVPrinter csvPrinter = new CSVPrinter(out, CSVFormat.DEFAULT.withHeader(csvHeaders));
         for (Attendance attendance : allAttendances) {
             String[] row = new String[numColumns];
