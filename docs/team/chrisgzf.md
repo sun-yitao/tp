@@ -42,7 +42,6 @@ Given below are my contributions to the project.
   - Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
   - Contributed to se-edu's SE Textbook: [\#91](https://github.com/se-edu/se-book/pull/91)
   - Provided suggestions for other classmates: [\#58](https://github.com/nus-cs2103-AY2021S1/forum/issues/58)
-  
 
 - **Tools**:
 
