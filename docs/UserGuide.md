@@ -56,17 +56,17 @@ TAsker is a **desktop app for Teaching Assistants (TAs) to manage student admini
 
 - Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-  
+
 - Any invalid parameter tags will be parsed as literals.<br>
-  e.g. If we pass the `n/a/James` in as a parameter, 
+  e.g. If we pass the `n/a/James` in as a parameter,
   since `a/` is an invalid parameter tag,
   it will attempt to interpret `a/James` as a `NAME`,
   rather than treating `a/` as a parameter tag and `James` as its field.
-  
-- Extra inputs to commands will be ignored. <br>
-  e.g. 
 
-  - `list 1`, `1` will be ignored, 
+- Extra inputs to commands will be ignored. <br>
+  e.g.
+
+  - `list 1`, `1` will be ignored,
 
   - `exit abc`, `abc` will be ignored.
 
@@ -166,20 +166,20 @@ Format: `showatt INDEX d/DATE`
 
 Examples:
 
-- `showatt 1 d/12/12/2020` checks if the first student 
+- `showatt 1 d/12/12/2020` checks if the first student
   in the list attended class on 12th December, 2020.
-  
-  For example if "John" was our first student, 
+
+  For example if "John" was our first student,
   we would get the following response if he was present:
   ```
   John was present on Sat Dec 12 00:00:00 SGT 2020
   ```
-  
+
   If he was absent we would get this instead:
   ```
   John was absent on Sat Dec 12 00:00:00 SGT 2020
   ```
- 
+
 ### Marking Attendance : `attend`
 
 Marks the student as present for tutorial on a specified date.
