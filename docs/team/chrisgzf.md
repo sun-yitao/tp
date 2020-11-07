@@ -39,11 +39,11 @@ Given below are my contributions to the project.
 - **Community**:
 
   - PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  - Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
+  - Contributed to forum discussions (examples: [1](https://github.com/nus-cs2103-AY2021S1/forum/issues/52#issuecomment-678835959), [2](https://github.com/nus-cs2103-AY2021S1/forum/issues/172#issuecomment-690681241)
   - Contributed to se-edu's SE Textbook: [\#91](https://github.com/se-edu/se-book/pull/91)
-  - Provided suggestions for other classmates: [\#58](https://github.com/nus-cs2103-AY2021S1/forum/issues/58)
+  - Provided suggestions to enhance my classmates' workflow with their IDE: [\#58](https://github.com/nus-cs2103-AY2021S1/forum/issues/58)
 
 - **Tools**:
 
-  - Improved code review workflows by enforcing local CI checks to pass, with gradle Git Hooks
+  - Improved code review workflow by enforcing local CI checks before `git push` with gradle Git Hooks: see [\#88](https://github.com/AY2021S1-CS2103T-F11-1/tp/pull/88)
   - Integrated a new Github plugin (CircleCI) to the team repo
