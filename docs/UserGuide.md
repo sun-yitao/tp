@@ -265,7 +265,7 @@ Format: `exportatt`
 
 **Q**: How do I start using TAsker?
 <br>
-**A**: Refer to our [Quick Start Guide](https://hackmd.io/@chrisgzf/TAskerUG#Quick-start) here.
+**A**: Refer to our [Quick Start Guide](https://ay2021s1-cs2103t-f11-1.github.io/tp/UserGuide.html#quick-start) here.
 <br>
 
 **Q**: How do I transfer my data to another Computer?<br>
