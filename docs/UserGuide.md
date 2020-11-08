@@ -107,7 +107,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [m/MATRIC_NUMBER] 
 
 - Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
-- Existing values will be updated to the input values.
+- If the index is a positive integer, the format for each optional field will be checked in the above order before the index's validity is verified.
+- If all inputs are valid, the existing values will be updated to the input values.
 - When editing tags, the existing tags of the student will be removed i.e adding of tags is not cumulative.
 - You can remove all the student’s tags by typing `tg/` without
   specifying any tags after it.
