@@ -3,7 +3,6 @@ package seedu.address.logic.parser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -19,8 +18,6 @@ public class CommandParserTestUtil {
         try {
             Command command = parser.parse(userInput);
             assertEquals(expectedCommand, command);
-        } catch (CommandException ce) {
-            throw new IllegalArgumentException("Invalid userInput.", ce);
         } catch (ParseException pe) {
             throw new IllegalArgumentException("Invalid userInput.", pe);
         }
@@ -34,8 +31,6 @@ public class CommandParserTestUtil {
         try {
             parser.parse(userInput);
             throw new AssertionError("The expected ParseException was not thrown.");
-        } catch (CommandException ce) {
-            assertEquals(expectedMessage, ce.getMessage());
         } catch (ParseException pe) {
             assertEquals(expectedMessage, pe.getMessage());
         }
