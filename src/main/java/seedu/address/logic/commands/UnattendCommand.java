@@ -24,7 +24,7 @@ public class UnattendCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Removes attendance for the person identified by the index number used in the displayed person list.\n"
-            + "Attendance date should be in dd/MM/yyyy format.\n"
+            + "Attendance date should be valid and in dd/MM/yyyy format.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_DATE + "DATE\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_DATE + "27/03/1998";
