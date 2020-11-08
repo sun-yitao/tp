@@ -39,7 +39,7 @@ public class EditCommandParser implements Parser<EditCommand> {
                         PREFIX_MATRIC_NUMBER, PREFIX_TAG);
 
         boolean arePrefixesPresent = arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE,
-                PREFIX_EMAIL, PREFIX_TELEGRAM, PREFIX_MATRIC_NUMBER);
+                PREFIX_EMAIL, PREFIX_TELEGRAM, PREFIX_MATRIC_NUMBER, PREFIX_TAG);
 
         Index index;
         String preamble = argMultimap.getPreamble();
