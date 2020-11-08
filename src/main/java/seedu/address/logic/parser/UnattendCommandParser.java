@@ -21,7 +21,7 @@ public class UnattendCommandParser implements Parser<UnattendCommand> {
      * @return new UnattendCommand object.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public UnattendCommand parse(String args) throws CommandException, ParseException {
+    public UnattendCommand parse(String args) throws ParseException {
         requireNonNull(args);
         Index index;
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_DATE);
@@ -31,11 +31,9 @@ public class UnattendCommandParser implements Parser<UnattendCommand> {
         }
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (CommandException ce) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, UnattendCommand.MESSAGE_USAGE), pe);
+                    String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX));
         }
         Attendance attendance = ParserUtil.parseAttendance(argMultimap.getValue(PREFIX_DATE).get());
 

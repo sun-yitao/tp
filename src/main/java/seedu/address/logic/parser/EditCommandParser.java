@@ -49,12 +49,6 @@ public class EditCommandParser implements Parser<EditCommand> {
             );
         }
 
-        try {
-            index = ParserUtil.parseIndex(preamble);
-        } catch (ParseException pe) {
-            throw new ParseException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        }
-
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
@@ -75,7 +69,18 @@ public class EditCommandParser implements Parser<EditCommand> {
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(
+                    String.format(
+                            MESSAGE_INVALID_COMMAND_FORMAT,
+                            EditCommand.MESSAGE_USAGE
+                    )
+            );
+        }
+
+        try {
+            index = ParserUtil.parseIndex(preamble);
+        } catch (ParseException pe) {
+            throw new ParseException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
         return new EditCommand(index, editPersonDescriptor);

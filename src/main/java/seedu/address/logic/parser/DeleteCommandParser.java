@@ -20,8 +20,9 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      */
     public DeleteCommand parse(String args) throws ParseException {
         requireNonNull(args);
+        String trimmedArgs = args.trim();
 
-        if (args.trim().isEmpty()) {
+        if (trimmedArgs.isEmpty()) {
             throw new ParseException(
                     String.format(
                             MESSAGE_INVALID_COMMAND_FORMAT,
