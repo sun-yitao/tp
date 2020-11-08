@@ -44,10 +44,13 @@ public class Attendance implements Comparable<Attendance> {
      */
     public static Attendance fromDateString(String input) {
         requireNonNull(input);
+
         LocalDate date;
+        String trimmedInput = input.trim();
         try {
-            date = LocalDate.parse(input, DATE_FORMAT);
+            date = LocalDate.parse(trimmedInput, DATE_FORMAT);
         } catch (DateTimeParseException e) {
+
             checkArgument(false, MESSAGE_CONSTRAINTS);
             return null; // Never triggers as the above will throw an invalid argument exception
         }
