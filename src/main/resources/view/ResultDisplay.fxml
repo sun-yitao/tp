@@ -3,6 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
   <TextArea fx:id="resultDisplay" editable="false" promptText="Please input command in the box above. Type 'help' to access the user guide." styleClass="result-display" />
 </StackPane>
