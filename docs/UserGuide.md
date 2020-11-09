@@ -97,6 +97,8 @@ Examples:
 
 Shows a list of all students in charge by the TA.
 
+You may navigate to the Students tab to view the full list of students.
+
 Format: `list`
 
 ### Editing a student : `edit`
@@ -173,12 +175,12 @@ Examples:
   For example if "John" was our first student,
   we would get the following response if he was present:
   ```
-  John was present on Sat Dec 12 00:00:00 SGT 2020
+  John was present on 2020-12-12
   ```
 
   If he was absent we would get this instead:
   ```
-  John was absent on Sat Dec 12 00:00:00 SGT 2020
+  John was absent on 2020-12-12
   ```
 
 ### Marking Attendance : `attend`
@@ -230,7 +232,9 @@ Examples:
 
 ### Listing all consultations: `list-consult`
 
-Shows a list of all consultations in charge by the TA.
+Shows a list of all consultations in charge by the TA. 
+
+You may navigate to the Consultations tab to view the full list of consultations.
 
 Format: `list-consult`
 
@@ -238,7 +242,7 @@ Format: `list-consult`
 
 Creates a copy of all current data, tagged with the current date and time.
 
-e.g. running this command will create a file called `tasker_2020-09-13_1041` containing all your saved data, in your `/data` folder.
+Running this command will create a file (e.g. `tasker_2020-09-13_1041`) containing all your saved data, in your `/data` folder.
 
 Format: `archive`
 
@@ -246,7 +250,7 @@ Format: `archive`
 
 Exports attendance to a csv file in `data/attendance_YYYY-MM-DD_HHmm.csv`
 
-e.g. Running this command will create a new csv file called `attendance_2020-09-13_1041.csv`, in your `/data` folder. Each column corresponds to a student and each row corresponds to a date. Every cell is marked with either `ATTENDED` or `ABSENT` depending on whether the student has attended that day.
+Running this command will create a new csv file (e.g. `attendance_2020-09-13_1041.csv`) in your `/data` folder. Each column corresponds to a student and each row corresponds to a date. Every cell is marked with either `ATTENDED` or `ABSENT` depending on whether the student has attended that day.
 
 Format: `exportatt`
 
