@@ -153,7 +153,7 @@ Examples:
 - `list` followed by `delete 2` deletes the 2nd student in the address book.
 - `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
 
-### Clearing all entries : `clear`
+### Clearing all students : `clear`
 
 Clears all entries from the list of students.
 
@@ -234,16 +234,6 @@ Shows a list of all consultations in charge by the TA.
 
 Format: `list-consult`
 
-### Exiting the program : `exit`
-
-Exits the program.
-
-Format: `exit`
-
-### Saving the data
-
-TAsker data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
 ### Archiving data files : `archive`
 
 Creates a copy of all current data, tagged with the current date and time.
@@ -260,6 +250,12 @@ e.g. Running this command will create a new csv file called `attendance_2020-09-
 
 Format: `exportatt`
 
+### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
+
 ---
 
 ## FAQ
@@ -269,7 +265,8 @@ Format: `exportatt`
 **A**: Refer to our [Quick Start Guide](https://ay2021s1-cs2103t-f11-1.github.io/tp/UserGuide.html#quick-start) here.
 <br>
 
-**Q**: How do I transfer my data to another Computer?<br>
+**Q**: How do I transfer my data to another Computer?
+<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TAsker home folder.
 <br>
 
@@ -283,6 +280,11 @@ Format: `exportatt`
 **A**: More than you will ever teach in a lifetime.
 <br>
 
+**Q**: How do I save my data?
+<br>
+**A**: TAsker data is automatically saved in the hard disk after the execution of any command that changes the data. There is no need to save manually.
+<br>
+
 **Q**: How do I submit a bug report?
 <br>
 **A**: [Open an issue on our github repository](https://github.com/AY2021S1-CS2103T-F11-1/tp/issues).
@@ -294,17 +296,19 @@ Format: `exportatt`
 
 | Action                   | Format, Examples                                                                                                                                                                                                           |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Add**                  | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM m/MATRIC_NUMBER [tg/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com t/james-ho m/A0202345B tg/friend tg/colleague`                                        |
-| **Clear**                | `clear`                                                                                                                                                                                                                    |
-| **Delete**               | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                        |
-| **Edit**                 | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [m/MATRIC_NUMBER] [tg/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                    |
-| **Find**                 | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                 |
-| **Show Attendance**      | `showatt INDEX d/DATE`                                                                                                                                                                                                     |
-| **Marking Attendance**   | `attend INDEX d/DATE`                                                                                                                                                                                                      |
-| **Unmarking Attendance** | `unattend INDEX d/DATE`                                                                                                                                                                                                    |
-| **Add Consultation**     | `add-consult n/NAME d/DATE tm/TIME a/LOCATION ty/TYPE`                                                                                                                                                                     |
-| **Archive**              | `archive`                                                                                                                                                                                                                  |
-| **List**                 | `list`                                                                                                                                                                                                                     |
+| **Add Student**          | `add n/NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM m/MATRIC_NUMBER [tg/TAG]…​`<br> e.g., `add n/James Ho p/98765432 e/jamesho@example.com t/james-ho m/A0202345B tg/F11`                                                         |
+| **Edit Student**         | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TELEGRAM] [m/MATRIC_NUMBER] [tg/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                    |
+| **Find Student**         | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                 |
+| **List Students**        | `list`                                                                                                                                                                                                                     |
+| **Delete Student**       | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                        |
+| **Clear All Students**   | `clear`                                                                                                                                                                                                                    |
+| **Show Attendance**      | `showatt INDEX d/DATE`<br> e.g., `showatt 1 d/12/12/2020`                                                                                                                                                                  |
+| **Marking Attendance**   | `attend INDEX d/DATE`<br> e.g., `attend 1 d/12/12/2000`                                                                                                                                                                    |
+| **Unmarking Attendance** | `unattend INDEX d/DATE`<br> e.g., `unattend 1 d/12/12/2000`                                                                                                                                                                |
+| **Add Consultation**     | `add-consult n/NAME d/DATE tm/TIME a/LOCATION ty/TYPE`<br> e.g., `add-consult n/John Doe d/10/10/2020 tm/18:00 a/SOC Basement ty/personal`                                                                                 |
+| **Delete Consultation**  | `del-consult INDEX`<br> e.g., `del-consult 1`                                                                                                                                                                              |
 | **List Consultation**    | `list-consult`                                                                                                                                                                                                             |
+| **Archive Data Files**   | `archive`                                                                                                                                                                                                                  |
+| **Export Attendance**    | `exportatt`                                                                                                                                                                                                                |
 | **Help**                 | `help`                                                                                                                                                                                                                     |
 | **Exit**                 | `exit`                                                                                                                                                                                                                     |
