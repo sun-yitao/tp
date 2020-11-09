@@ -218,6 +218,8 @@ Examples:
 - `add-consult n/John Doe d/10/10/2020 tm/18:00 a/SOC Basement ty/personal`
 - `add-consult n/Ann Lim d/30/05/2020 tm/11:00 a/Tembusu College ty/group `
 
+![result for add consult command](images/addConsultResult.png)
+
 ### Deleting a consultation: `del-consult`
 
 Deletes a consultation from the address book.
@@ -230,6 +232,8 @@ Examples:
 
 - `del-consult 1`
 
+![result for delete consult command](images/delConsultResult.png)
+
 ### Listing all consultations: `list-consult`
 
 Shows a list of all consultations in charge by the TA. 
@@ -238,6 +242,8 @@ You may navigate to the Consultations tab to view the full list of consultations
 
 Format: `list-consult`
 
+![result for list consult command](images/listConsultResult.png)
+
 ### Archiving data files : `archive`
 
 Creates a copy of all current data, tagged with the current date and time.
@@ -245,6 +251,8 @@ Creates a copy of all current data, tagged with the current date and time.
 Running this command will create a file (e.g. `tasker_2020-09-13_1041`) containing all your saved data, in your `/data` folder.
 
 Format: `archive`
+
+![result for archive command](images/archiveCommandResult.png)
 
 ### Exporting attendance : `exportatt`
 
